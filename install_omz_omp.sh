@@ -1,6 +1,6 @@
 cd $HOME
 
-if [ "$EUID" == 0 ]; then
+if [ "$EUID" = 0 ]; then
     apt update -y
     apt install -y git zsh curl
 else
@@ -11,7 +11,7 @@ fi
 echo "\nInstall oh-my-zsh ..."
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-sed 's/\(^plugins=([^)]*\)/\1 zsh-autosuggestions/' ~/.zshrc
+sed -i 's/\(^plugins=([^)]*\)/\1 zsh-autosuggestions/' ~/.zshrc
 
 echo "\nInstall oh-my-posh ..."
 sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v16.10.0/posh-linux-arm -O /usr/local/bin/oh-my-posh
